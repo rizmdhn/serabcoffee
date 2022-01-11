@@ -111,11 +111,26 @@ class ProductController extends Controller
             'file_path' => 'required',
             'harga' => 'required|numeric',
         ]);
+        if ($request->hasFile('file_path')) {
+            $request->validate([
+                'file_path' => 'mimes:jpg,png,jpeg,gif,svg,JPG' // Only allow .jpg, .bmp and .png file types.
+            ]);
+            $request->file('file_path')->store('product', 'public');
 
-        $input = $request->all();
+        $products = new Product();
+        $products = (object) [
+            "product_name" => $request->get('product_name'),
+            "product_category" => $request->get('product_category'),
+            "product_desc" => $request->get('product_desc'),
+            "harga"=> $request->get('harga'),
+            "file_path" => $request->file('file_path')->hashName()
+        ];
 
-        $products->fill($input)->save();
+     $products->save();
 
+    }
+    
+  
         return redirect()->route('products.index');
     }
 

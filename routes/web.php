@@ -50,6 +50,10 @@ Route::get('/product/maincourse', function () {
     $products = Product::all();
     return view('product',compact('products','products'));    
 });
+Route::get('/product/non-coffee', function () {
+    $products = Product::all();
+    return view('non-coffee',compact('products','products'));    
+});
 
 Route::get('cart', 'App\Http\Controllers\CartController@cartList')->name('cart.list');
 Route::post('cart', 'App\Http\Controllers\CartController@addToCart')->name('cart.store');

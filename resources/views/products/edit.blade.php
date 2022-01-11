@@ -19,30 +19,30 @@
     @endif
 
     <!-- Open the form with the store function route. -->
-    {{ Form::open(['action' => ['productController@update', $product->id], 'method' => 'put']) }}
+    {{ Form::open(['action' => ['App\Http\Controllers\ProductController@update', $products->id], 'method' => 'put']) }}
     <!-- Include the CRSF token -->
     {{Form::token()}}
     <!-- build our form inputs -->
     <div class="form-group">
         {{Form::label('product_name', 'Product Name')}}
-        {{Form::text('product_name', '', ['class' => 'form-control'])}}
+        {{Form::text('product_name', $products->product_name, ['class' => 'form-control'])}}
     </div>
 
     <div class="form-group">
         {{Form::label('product_category', 'product category')}}
-        {{Form::text('product_category', '', ['class' => 'form-control'])}}
+        {{Form::select('product_category',['1' => 'Main course', '2' => 'Small bites','3'=>'Coffee','4'=>'Non-Coffee'], $products->product_category, ['class' => 'form-control'])}}
     </div>
     <div class="form-group">
         {{Form::label('product_desc', 'Product desc')}}
-        {{Form::text('product_desc', '', ['class' => 'form-control'])}}
+        {{Form::text('product_desc', $products->product_desc, ['class' => 'form-control'])}}
     </div>
     <div class="form-group">
         {{Form::label('file_path', 'File path')}}
-        {{Form::file('file_path', '', ['class' => 'form-control'])}}
+        {{Form::file('file_path', ['class' => 'form-control'])}}
     </div>
     <div class="form-group">
         {{Form::label('harga', 'harga')}}
-        {{Form::number('harga', '', ['class' => 'form-control'])}}
+        {{Form::number('harga', $products->harga, ['class' => 'form-control'])}}
     </div>
 
     
