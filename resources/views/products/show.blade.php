@@ -19,7 +19,7 @@
 
         <dt>file_path</dt>
         
-        <dd style="height: 30vh; width: 100vw; object-fit: cover"><img src="{{asset('storage/product').'/'.$products->file_path}}" ></dd>
+        <dd style="height: 30vh; width: 50vw"><img style="height: 30vh; width: 50vw" src="{{asset('storage/product').'/'.$products->file_path}}" ></dd>
         <dt>harga</dt>
         <dd>{{$products->harga}}</dd>
     </dl>

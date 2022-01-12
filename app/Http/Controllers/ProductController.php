@@ -102,33 +102,30 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $products = Product::findOrFail($id);
+        $products = Product::find($id);
 
-        $this->validate($request, [
-            'product_name' => 'required',
-            'product_category' => 'required',
-            'product_desc' => 'required',
-            'file_path' => 'required',
-            'harga' => 'required|numeric',
-        ]);
-        if ($request->hasFile('file_path')) {
-            $request->validate([
-                'file_path' => 'mimes:jpg,png,jpeg,gif,svg,JPG' // Only allow .jpg, .bmp and .png file types.
+        if ($products === null) {
+            $this->error("Invalid or non-existent link ID.");
+            $this->validate($request, [
+                'product_name' => 'required',
+                'product_category' => 'required',
+                'product_desc' => 'required',
+                'harga' => 'required|numeric',
             ]);
-            $request->file('file_path')->store('product', 'public');
-
-        $products = new Product();
-        $products = (object) [
-            "product_name" => $request->get('product_name'),
-            "product_category" => $request->get('product_category'),
-            "product_desc" => $request->get('product_desc'),
-            "harga"=> $request->get('harga'),
-            "file_path" => $request->file('file_path')->hashName()
-        ];
+              
+            $products = new Product();
+            $products = (object) [
+                "product_name" => $request->get('product_name'),
+                "product_category" => $request->get('product_category'),
+                "product_desc" => $request->get('product_desc'),
+                "harga"=> $request->get('harga'),
+            ];
+        }
+        
 
      $products->save();
 
-    }
+
     
   
         return redirect()->route('products.index');
