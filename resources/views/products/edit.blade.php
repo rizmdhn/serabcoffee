@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.backofficemaster')
 
 @section('pageTitle', 'Edit products Details')
 
@@ -19,7 +19,7 @@
     @endif
 
     <!-- Open the form with the store function route. -->
-    {{ Form::open(['action' => ['App\Http\Controllers\ProductController@update', $products->id], 'method' => 'POST']) }}
+    {{ Form::open(['action' => ['App\Http\Controllers\ProductController@update', $products->id], 'method' => 'PUT']) }}
     <!-- Include the CRSF token -->
     {{Form::token()}}
     <!-- build our form inputs -->
@@ -42,9 +42,9 @@
         {{Form::number('harga', $products->harga, ['class' => 'form-control'])}}
     </div>
     {{Form::hidden('_method', 'PUT')}}
-    
+
 
     {{Form::submit('Update!', ['class' => 'btn btn-primary'])}}
     {{ Form::close() }}
-    
+
 @endsection

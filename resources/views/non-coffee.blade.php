@@ -33,9 +33,9 @@
 
                                 <div class="box-down">
                                     <div class="h-bg">
-                                        <div class="h-bg-inner"> 
+                                        <div class="h-bg-inner">
                                         </div>
-                                        
+
                                     </div>
 
                                     <a class="cart" href="#">

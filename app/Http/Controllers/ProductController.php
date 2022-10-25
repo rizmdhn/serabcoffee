@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::with('category_name')->get();
         return view('products.index', compact('products','products'));
     }
 
@@ -57,7 +57,6 @@ class ProductController extends Controller
             "harga"=> $request->get('harga'),
             "file_path" => $request->file('file_path')->hashName()
         ];
-
         Product::create($products);
 
     }
@@ -65,7 +64,7 @@ class ProductController extends Controller
 
      //   Product::create($input);
 
-        return redirect()->route('products.index');
+        return redirect()->route('backofficeproducts.index');
     }
 
     /**
@@ -89,7 +88,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $products = Product::find($id);
-        
+
         return view('products.edit', compact('products','products'));
     }
 
@@ -112,7 +111,7 @@ class ProductController extends Controller
                 'product_desc' => 'required',
                 'harga' => 'required|numeric',
             ]);
-              
+
             $products = new Product();
             $products = (object) [
                 "product_name" => $request->get('product_name'),
@@ -121,14 +120,14 @@ class ProductController extends Controller
                 "harga"=> $request->get('harga'),
             ];
         }
-        
+
 
      $products->save();
 
 
-    
-  
-        return redirect()->route('products.index');
+
+
+        return redirect()->route('backofficeproducts.index');
     }
 
     /**
@@ -142,7 +141,7 @@ class ProductController extends Controller
         $products = Product::findOrFail($id);
 
         $products->delete();
-        
-        return redirect()->route('products.index');
+
+        return redirect()->route('backofficeproducts.index');
     }
 }

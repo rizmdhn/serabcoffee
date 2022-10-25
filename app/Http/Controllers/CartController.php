@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DbCart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -66,6 +67,8 @@ class CartController extends Controller
     }
 
     public function checkout(){
-        
+        DbCart::create([
+            'cart_data' => serialize(\Cart::getContent()),
+        ]);
     }
 }

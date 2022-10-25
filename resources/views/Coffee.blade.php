@@ -6,9 +6,9 @@
     <div class="row pt-4">
         <div class="col-3">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link" id="v-pills-All-tab" href="/product/">All</a>
-                <a class="nav-link active" id="v-pills-Coffee-tab" href="#v-pills-Coffee">Coffee</a>
-                <a class="nav-link" id="v-pills-nonCoffee-tab" href="#v-pills-nonCoffee">Non-Coffee</a>
+                <a class="nav-link" id="v-pills-All-tab" href="/product">All</a>
+                <a class="nav-link" id="v-pills-Coffee-tab" href="/product/coffee">Coffee</a>
+                <a class="nav-link active" id="v-pills-nonCoffee-tab" href="/product/non-coffee">Non-Coffee</a>
                 <a class="nav-link" id="v-pills-MainCourse-tab" href="#v-pills-MainCourse">Main Course</a>
             </div>
         </div>
@@ -33,9 +33,9 @@
 
                                 <div class="box-down">
                                     <div class="h-bg">
-                                        <div class="h-bg-inner"> 
+                                        <div class="h-bg-inner">
                                         </div>
-                                        
+
                                     </div>
 
                                     <a class="cart" href="#">

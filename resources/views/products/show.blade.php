@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.backofficemaster')
 
 @section('pageTitle', 'products Details')
 
@@ -18,16 +18,16 @@
         <dd>{{$products->product_desc}}</dd>
 
         <dt>file_path</dt>
-        
+
         <dd style="height: 30vh; width: 50vw"><img style="height: 30vh; width: 50vw" src="{{asset('storage/product').'/'.$products->file_path}}" ></dd>
         <dt>harga</dt>
         <dd>{{$products->harga}}</dd>
     </dl>
 
     <div class="d-flex">
-        <a href="{{route('products.edit', $products->id)}}" class="btn btn-primary m-1">Edit</a>
+        <a href="{{route('backofficeproducts.edit', $products->id)}}" class="btn btn-primary m-1">Edit</a>
 
-        <form action="{{ route('products.destroy', $products->id) }}" method="POST">
+        <form action="{{ route('backofficeproducts.destroy', $products->id) }}" method="POST">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <button class="btn btn-danger m-1">Delete</button>

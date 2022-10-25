@@ -1,10 +1,10 @@
-@extends('layouts.master')
+@extends('layouts.backofficemaster')
 
 @section('pageTitle', 'products Index')
 
 @section('content')
     <h1 class="display-6">products</h1>
-    <a href="{{route('products.create')}}">Create New</a>
+    <a href="{{route('backofficeproducts.create')}}" class="btn btn-primary m-1">Create New</a>
     <hr/>
 
 
@@ -21,16 +21,16 @@
         @foreach($products as $product)
             <tr>
                 <td>{{$product->product_name}}</td>
-                <td>{{$product->product_category}}</td>
+                <td>{{$product->category_name->category_name ?? '-' }}</td>
                 <td>{{$product->product_desc}}</td>
-                <td>{{$product->file_path}}</td>
+                <td><img style="height: 100px; width: 100px; object-fit: contain;" src="{{asset('storage/product').'/'.$product->file_path}}" ></td>
                 <td>{{$product->harga}}</td>
                 <td>
                     <div class="d-flex">
-                        <a href="{{route('products.show', $product->id)}}" class="btn btn-info m-1">Details</a>
-                        <a href="{{route('products.edit', $product->id)}}" class="btn btn-primary m-1">Edit</a>
+                        <a href="{{route('backofficeproducts.show', $product->id)}}" class="btn btn-info m-1">Details</a>
+                        <a href="{{route('backofficeproducts.edit', $product->id)}}" class="btn btn-primary m-1">Edit</a>
 
-                        <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                        <form action="{{ route('backofficeproducts.destroy', $product->id) }}" method="POST">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <button class="btn btn-danger m-1">Delete User</button>

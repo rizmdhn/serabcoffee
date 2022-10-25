@@ -17,4 +17,8 @@ class Product extends Model
         'harga'
 
     ];
+
+    public function category_name(){
+        return $this->hasOne(Product_category::class, 'id', 'product_category');
+    }
 }

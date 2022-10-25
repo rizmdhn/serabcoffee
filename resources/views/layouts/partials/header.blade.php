@@ -12,11 +12,11 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about">About Us</a>
+                        <a class="nav-link" href={{ route('home.about') }}>About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/product">Product</a>
-                    </li>                    
+                        <a class="nav-link" href={{ route('home.products') }}>Product</a>
+                    </li>
                 </ul>
             </div>
                 <a href="{{ route('cart.list') }}" class="float-right pr-5 text-black-50">
@@ -25,6 +25,6 @@
                     </svg>
                     {{ Cart::getTotalQuantity()}}
                 </a>
-            
+
         </nav>
     </div>

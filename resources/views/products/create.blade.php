@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.backofficemaster')
 
 @section('pageTitle', 'Create A product')
 
@@ -31,6 +31,7 @@
     </div>
     <div class="form-group">
         {{Form::label('product_category', 'product category')}}
+        <br>
         {{Form::select('product_category', ['1' => 'Main course', '2' => 'Small bites','3'=>'Coffee','4'=>'Non-Coffee'], null, ['placeholder' => 'Pick a category'], ['class' => 'form-control'])}}
     </div>
     <div class="form-group">

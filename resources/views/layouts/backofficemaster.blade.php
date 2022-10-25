@@ -2,19 +2,17 @@
 <html lang="en">
 <head>
 
-    @include('layouts.partials.meta')
+    @include('layouts.backofficepartials.meta')
 </head>
 
-<body class="vh-100">
+<body>
 
-@include('layouts.partials.header')
+@include('layouts.backofficepartials.header')
 
 
-<div class="container-fluid align-self-center vh-100">
+<div class="container-fluid align-self-center">
     @yield('content')
 </div>
-
-@include('layouts.partials.footer')
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -3,7 +3,7 @@
 @section('pageTitle', 'Serabs product')
 
 @section('content')
-    <div class="row pt-4">
+    <div class="row pt-4 ">
         <div class="col-3">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-All-tab" href="/product">All</a>
@@ -33,10 +33,10 @@
 
                                 <div class="box-down">
                                     <div class="h-bg">
-                                        <div class="h-bg-inner"> 
+                                        <div class="h-bg-inner">
                                         </div>
-                                        
-                                    </div>                                   
+
+                                    </div>
                                             <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <input type="hidden" value="{{ $product->id }}" name="id">
@@ -52,7 +52,7 @@
                                                 </button>
                                             </a>
                                              </form>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -61,5 +61,5 @@
                 @endforeach
             </div>
         </div>
-
+    </div>
     @endsection

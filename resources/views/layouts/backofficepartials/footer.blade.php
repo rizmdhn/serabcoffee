@@ -1,5 +1,5 @@
 
-<footer class="footer">
+<footer class="footer fixed-bottom">
     <div class="container-fluid pt-2 align-bottom overflow-hidden ">
         <div class="row text-white w-100">
             <div class="col-6 pt-2">
@@ -20,6 +20,4 @@
             </div>
         </div>
     </div>
-
-
 </footer>

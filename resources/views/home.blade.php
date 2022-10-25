@@ -31,7 +31,7 @@
                         <a class="nav-link" href="">Home</a>
                     </li>
                     <li class="nav-item  ">
-                        <a class="nav-link" href="about">About Us</a>
+                        <a class="nav-link" href={{ route('home.about') }}>About Us</a>
                     </li>
                     <li class="nav-item  ">
                         <a class="nav-link" href="/product">Product</a>
@@ -47,9 +47,9 @@
     <div class="home" style="width: 100vw; height: 100vh; position: absolute; top: 0; z-index: 2">
         <img src="assets/{{ $image }}" style="object-fit: cover; width: 100%; height:100%;"
             alt="SerabSurrounding">
-            
+
         </div>
-   
+
 
 </body>
 
