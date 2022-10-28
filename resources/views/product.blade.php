@@ -39,6 +39,7 @@
                                     </div>
                                             <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
+                                                <input type="hidden" name="product_id" value="{{  }}">
                                                 <input type="hidden" value="{{ $product->id }}" name="id">
                                                 <input type="hidden" value="{{ $product->product_name }}" name="product_name">
                                                 <input type="hidden" value="{{ $product->harga }}" name="harga">
