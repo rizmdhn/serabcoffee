@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\DbCart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function cartList()
     {
         $cartItems = \Cart::getContent();
-        // dd($cartItems);
         return view('cart', compact('cartItems'));
     }
 
@@ -18,6 +18,7 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         \Cart::add(array(
+            'table_number' => $request->table_number,
             'id' => $request->id,
             'name' => $request->product_name,
             'price' => $request->harga,

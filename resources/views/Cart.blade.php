@@ -85,6 +85,9 @@
                 @csrf
                 <button class="px-6 py-2 text-red-800 bg-red-300">Remove All Cart</button>
             </form>
+            <form action="{{ route('cart.checkout') }}" method="POST">
+                @csrf
+            <button class="px-6 py-2 text-green-800 bg-green-300">Checkout</button>
         </div>
 
 

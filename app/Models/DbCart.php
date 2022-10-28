@@ -13,11 +13,11 @@ class DbCart extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * 
+     *
      * @var array
      */
     protected $fillable = [
-        'id', 'cart_data',
+        'id', 'table_id','cart_data',
     ];
 
     public function setCartDataAttribute($value)
