@@ -8,5 +8,5 @@
     <script src="js/app.js"></script>
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <title>Serab Coffee Backoffice</title>
+    <title>Nahini Coffee Backoffice</title>
 

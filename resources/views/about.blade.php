@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
-@section('pageTitle', 'About Serab Coffee')
+@section('pageTitle', 'About Nahini Coffee')
 
 @section('content')
     <div class="container mt-3">
         <div class="row">
             <div class="col-sm-6">
-                <p class="text-justify" style="font-size: 1rem"><span class="font-weight-bold">Serab Coffee Brewery</span>
+                <p class="text-justify" style="font-size: 1rem"><span class="font-weight-bold">Nahini Coffee Brewery</span>
                     adalah kedai kopi yang berdiri pada 24
                     Mei 2019. Kami sangat terpaku untuk memberikan pelayanan
                     terbaik bagi pelanggan agar pelanggan tetap nyaman dan

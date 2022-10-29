@@ -18,24 +18,24 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('home',[
-        "title"=> "Serab Coffee",
+        "title"=> "Nahini Coffee",
         "image"=> "IMG_7120.jpeg",
-        "logo"=> "Serab's Coffee.png"
+        "logo"=> "Nahini's Coffee.png"
     ]);
 });
 
 Route::get('/about', function () {
     return view('about',[
-        "title"=> "About Serab Coffee!",
+        "title"=> "About Nahini Coffee!",
         "image"=> "9. filosofi logo 1 (2).jpg",
-        "logo"=> "Serab's Coffee.png"
+        "logo"=> "Nahini's Coffee.png"
     ]);
 })->name('home.about');
 
 Route::get('/product', function () {
     $products = Product::all();
     return view('product',[
-        "title"=> "Serabcoffee's Product!",
+        "title"=> "Nahini's Product!",
 
     ],compact('products','products'));
 })->name('home.products');

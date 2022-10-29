@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('pageTitle', 'Serabs product')
+@section('pageTitle', 'Nahini product')
 
 @section('content')
     <div class="row pt-4 ">

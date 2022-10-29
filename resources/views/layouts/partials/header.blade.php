@@ -1,7 +1,7 @@
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg navbar-light bg-light " style="z-index: 10 ;font-size: 1.5rem;">
             <a class="navbar-brand ff-gothic p-0 m-0" style="font-size: 2.5rem;color:rgb(25, 52, 70); "
-                href="/">serab<span style="font-size: 2.5rem;color:rgb(219, 172, 132);"> coffee</span></a>
+                href="/">Nahini<span style="font-size: 2.5rem;color:rgb(219, 172, 132);"> coffee</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

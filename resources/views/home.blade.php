@@ -18,7 +18,7 @@
         <nav class="navbar navbar-expand-lg navbar-light  bg-light " style="z-index: 10 ;font-size: 1.5rem;">
             <a class="navbar-brand text-hide" href="/">
                 <img src="assets/{{ $logo }}" width="45" height="45" style="object-fit: fill" alt="logo serabcoffee">
-                Serab Coffee
+                Nahini Coffee
               </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +42,7 @@
     </div>
     <h1 class="text-center" style="position: absolute; width: 100%; z-index: 100; top: 50%; left: 50%; transform: translate(-50%, -50%)">
         <a class="ff-gothic p-0 m-0" style="font-size: 2.5rem;color: rgb(219, 172, 132);"
-        href="/">serab<span style="font-size: 2.5rem;color:rgb(25, 52, 70);"> coffee</span></a>    </h1>
+        href="/">Nahini<span style="font-size: 2.5rem;color:rgb(25, 52, 70);"> coffee</span></a>    </h1>
 
     <div class="home" style="width: 100vw; height: 100vh; position: absolute; top: 0; z-index: 2">
         <img src="assets/{{ $image }}" style="object-fit: cover; width: 100%; height:100%;"
