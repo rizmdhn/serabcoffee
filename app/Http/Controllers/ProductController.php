@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
-
+use App\Models\Product_category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -12,10 +13,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $products = Product::with('category_name')->get();
-        return view('products.index', compact('products','products'));
+        $table_number = $request->cookie('table_numbe');
+        return view('products.index', compact('products','table_number'));
     }
 
     /**
@@ -25,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $category = Product_category::pluck('category_name', 'id')->toArray();
+        return view('products.create', compact('category'));
     }
 
     /**

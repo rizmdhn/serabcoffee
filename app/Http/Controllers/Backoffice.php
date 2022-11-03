@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DbCart;
 use App\Models\table;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class Backoffice extends Controller
 {
@@ -15,7 +17,15 @@ class Backoffice extends Controller
     public function index()
     {
         $tables = table::orderBy('table_number', 'asc')->get();
-        return view('backofficeDashboard', compact('tables'));
+        $cartdata = DbCart::where('isfinished', false)->get();
+        $order = collect();
+        foreach ($cartdata as $item) {
+            $order->push([
+                'table_number' => $item->table_number,
+                'cart_data' => unserialize($item->cart_data),
+            ]);
+        };
+        return view('backofficeDashboard', compact('tables', 'order'));
     }
 
     /**

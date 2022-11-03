@@ -49,6 +49,7 @@
 
                                     <form action="{{ route('cart.update') }}" method="POST">
                                         @csrf
+                                        <input type="hidden" name="table_number" value="{{ Request::cookie('table_number') }}">
                                         <input type="hidden" name="id" value="{{ $item->id }}">
                                         <input type="number" name="quantity" value="{{ $item->quantity }}"
                                             class="w-6 text-center border-0" />
@@ -66,6 +67,7 @@
                         <td class="hidden text-right md:table-cell p-4">
                             <form action="{{ route('cart.remove') }}" method="POST">
                                 @csrf
+                                <input type="hidden" name="table_number" value="{{ Request::cookie('table_number') }}">
                                 <input type="hidden" value="{{ $item->id }}" name="id">
                                 <button class="border-0 bg-danger"><a style="text-decoration: underline; color: white">
                                     remove</a></button>
@@ -78,15 +80,17 @@
             </tbody>
         </table>
         <div>
-            Total: ${{ Cart::getTotal() }}
+            Total: ${{ Cart::session(Request::cookie('table_number'))->getTotal() }}
         </div>
         <div>
             <form action="{{ route('cart.clear') }}" method="POST">
                 @csrf
+                <input type="hidden" name="table_number" value="{{ Request::cookie('table_number') }}">
                 <button class="px-6 py-2 text-red-800 bg-red-300">Remove All Cart</button>
             </form>
             <form action="{{ route('cart.checkout') }}" method="POST">
                 @csrf
+                <input type="hidden" name="table_number" value="{{ Request::cookie('table_number') }}">
             <button class="px-6 py-2 text-green-800 bg-green-300">Checkout</button>
         </div>
 

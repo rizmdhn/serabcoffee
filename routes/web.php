@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -24,6 +25,8 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/cookie/set/{table_number}','App\Http\Controllers\CookieController@setCookie');
+Route::get('/cookie/get','App\Http\Controllers\CookieController@getCookie');
 Route::get('/about', function () {
     return view('about',[
         "title"=> "About Nahini Coffee!",
@@ -32,28 +35,27 @@ Route::get('/about', function () {
     ]);
 })->name('home.about');
 
-Route::get('/product', function () {
-    $products = Product::all();
+Route::get('/product', function (Request $request) {
+    $products = Product::with('category_name')->get();
+    $table_number = $request->cookie('table_number');
     return view('product',[
         "title"=> "Nahini's Product!",
-
-    ],compact('products','products'));
+    ],compact('products','table_number'));
 })->name('home.products');
-
 Route::get('/product/coffee', function () {
-    $products = Product::all();
+    $products = Product::with('category_name')->get();
     return view('Coffee',compact('products','products'));
 });
 Route::get('/product/lightbites', function () {
-    $products = Product::all();
+    $products = Product::with('category_name')->get();
     return view('product',compact('products','products'));
 });
-Route::get('/product/maincourse', function () {
-    $products = Product::all();
-    return view('product',compact('products','products'));
+Route::get('/product/main-course', function () {
+    $products = Product::with('category_name')->get();
+    return view('MainCourse',compact('products','products'));
 });
 Route::get('/product/non-coffee', function () {
-    $products = Product::all();
+    $products = Product::with('category_name')->get();
     return view('non-coffee',compact('products','products'));
 });
 

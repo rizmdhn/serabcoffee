@@ -17,7 +17,7 @@ class DbCart extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'table_id','cart_data',
+        'id', 'table_number','cart_data', 'isfinished',
     ];
 
     public function setCartDataAttribute($value)

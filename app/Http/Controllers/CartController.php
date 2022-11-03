@@ -8,17 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function cartList()
+    public function cartList(Request $request)
     {
-        $cartItems = \Cart::getContent();
+
+        $cartItems = \Cart::session($request->cookie('table_number'))->getContent();
         return view('cart', compact('cartItems'));
     }
 
 
     public function addToCart(Request $request)
     {
-        \Cart::add(array(
-            'table_number' => $request->table_number,
+        \Cart::session($request->table_number)->add(array(
             'id' => $request->id,
             'name' => $request->product_name,
             'price' => $request->harga,
@@ -29,12 +29,13 @@ class CartController extends Controller
             )
         );
         session()->flash('success', 'Product is Added to Cart Successfully !');
+        return redirect()->route('home.products');
 
-        return redirect()->route('cart.list');
     }
 
     public function updateCart(Request $request)
     {
+        \Cart::session($request->table_number);
         \Cart::update(
             $request->id,
             [
@@ -52,14 +53,16 @@ class CartController extends Controller
 
     public function removeCart(Request $request)
     {
+        \Cart::session($request->table_number);
         \Cart::remove($request->id);
         session()->flash('success', 'Item Cart Remove Successfully !');
 
         return redirect()->route('cart.list');
     }
 
-    public function clearAllCart()
+    public function clearAllCart(Request $request)
     {
+        \Cart::session($request->table_number);
         \Cart::clear();
 
         session()->flash('success', 'All Item Cart Clear Successfully !');
@@ -67,9 +70,13 @@ class CartController extends Controller
         return redirect()->route('cart.list');
     }
 
-    public function checkout(){
+    public function checkout(Request $request){
         DbCart::create([
-            'cart_data' => serialize(\Cart::getContent()),
+            'table_number' => $request->table_number,
+            'cart_data' => serialize(\Cart::session($request->table_number)->getContent()),
         ]);
+        \Cart::session($request->table_number)->clear();
+        return redirect()->route('home.products');
     }
+
 }
