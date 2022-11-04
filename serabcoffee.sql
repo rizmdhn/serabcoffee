@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2022 at 04:57 AM
+-- Generation Time: Nov 04, 2022 at 05:18 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -29,11 +29,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cart_storage` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `table_id` int(11) NOT NULL,
+  `table_number` int(11) NOT NULL,
   `cart_data` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isfinished` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cart_storage`
+--
+
+INSERT INTO `cart_storage` (`id`, `table_number`, `cart_data`, `isfinished`, `created_at`, `updated_at`) VALUES
+(1, 3, 's:1040:\"O:32:\"Darryldecode\\Cart\\CartCollection\":1:{s:8:\"\0*\0items\";a:2:{i:12;O:32:\"Darryldecode\\Cart\\ItemCollection\":2:{s:9:\"\0*\0config\";a:6:{s:14:\"format_numbers\";b:0;s:8:\"decimals\";i:0;s:9:\"dec_point\";s:1:\".\";s:13:\"thousands_sep\";s:1:\",\";s:7:\"storage\";N;s:6:\"events\";N;}s:8:\"\0*\0items\";a:6:{s:2:\"id\";s:2:\"12\";s:4:\"name\";s:10:\"mdskladlsa\";s:5:\"price\";d:20000;s:8:\"quantity\";s:1:\"1\";s:10:\"attributes\";O:41:\"Darryldecode\\Cart\\ItemAttributeCollection\":1:{s:8:\"\0*\0items\";a:1:{s:5:\"image\";s:44:\"FrKzLwbRtR1hNfPlABF2q0ndQPbWh5J2ezrd4MbK.jpg\";}}s:10:\"conditions\";a:0:{}}}i:13;O:32:\"Darryldecode\\Cart\\ItemCollection\":2:{s:9:\"\0*\0config\";a:6:{s:14:\"format_numbers\";b:0;s:8:\"decimals\";i:0;s:9:\"dec_point\";s:1:\".\";s:13:\"thousands_sep\";s:1:\",\";s:7:\"storage\";N;s:6:\"events\";N;}s:8:\"\0*\0items\";a:6:{s:2:\"id\";s:2:\"13\";s:4:\"name\";s:8:\"djsakdsa\";s:5:\"price\";d:20000;s:8:\"quantity\";i:2;s:10:\"attributes\";O:41:\"Darryldecode\\Cart\\ItemAttributeCollection\":1:{s:8:\"\0*\0items\";a:1:{s:5:\"image\";s:44:\"98LYoBTyj67QJFxkQpnk8T4SS1Hh5Smna1aGfJZZ.jpg\";}}s:10:\"conditions\";a:0:{}}}}}\";', 1, '2022-11-02 20:33:02', '2022-11-03 21:17:41'),
+(3, 3, 's:558:\"O:32:\"Darryldecode\\Cart\\CartCollection\":1:{s:8:\"\0*\0items\";a:1:{i:14;O:32:\"Darryldecode\\Cart\\ItemCollection\":2:{s:9:\"\0*\0config\";a:6:{s:14:\"format_numbers\";b:0;s:8:\"decimals\";i:0;s:9:\"dec_point\";s:1:\".\";s:13:\"thousands_sep\";s:1:\",\";s:7:\"storage\";N;s:6:\"events\";N;}s:8:\"\0*\0items\";a:6:{s:2:\"id\";s:2:\"14\";s:4:\"name\";s:12:\"tsting again\";s:5:\"price\";d:10000;s:8:\"quantity\";s:1:\"1\";s:10:\"attributes\";O:41:\"Darryldecode\\Cart\\ItemAttributeCollection\":1:{s:8:\"\0*\0items\";a:1:{s:5:\"image\";s:44:\"mXrSL8A5iAMtqAZuKNrwUpG7Uw0EfjzM3sVvYYrX.png\";}}s:10:\"conditions\";a:0:{}}}}}\";', 0, '2022-11-02 21:41:37', '2022-11-02 21:41:37');
 
 -- --------------------------------------------------------
 
@@ -151,7 +160,8 @@ CREATE TABLE `product_category` (
 
 INSERT INTO `product_category` (`id`, `category_name`) VALUES
 (1, 'Coffee'),
-(2, 'Non-Coffee');
+(2, 'Non-Coffee'),
+(3, 'Main Course');
 
 -- --------------------------------------------------------
 
@@ -173,7 +183,9 @@ CREATE TABLE `table` (
 INSERT INTO `table` (`id`, `table_number`, `created_at`, `updated_at`) VALUES
 (1, '1', '2022-10-24 23:56:32', '2022-10-24 23:56:32'),
 (2, '3', '2022-10-24 23:56:59', '2022-10-25 00:16:02'),
-(3, '4', '2022-10-24 23:58:23', '2022-10-25 00:16:08');
+(3, '4', '2022-10-24 23:58:23', '2022-10-25 00:16:08'),
+(5, '2', '2022-10-27 20:06:03', '2022-10-27 20:06:03'),
+(6, '5', '2022-10-27 20:07:20', '2022-10-27 20:07:20');
 
 -- --------------------------------------------------------
 
@@ -191,6 +203,13 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'Admin@coffee.com', NULL, '$2y$10$FiLkp5UcPBs3AYPhE04Z/.L1mYtKpmqda/Sen7q84rg.jFTPnEU4y', NULL, '2022-10-27 21:44:57', '2022-10-27 21:44:57');
 
 --
 -- Indexes for dumped tables
@@ -262,7 +281,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart_storage`
 --
 ALTER TABLE `cart_storage`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -292,19 +311,19 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `table`
 --
 ALTER TABLE `table`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
