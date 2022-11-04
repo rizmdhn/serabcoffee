@@ -40,7 +40,10 @@
                                 </table>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-primary w-100 align-bottom">Go somewhere</a>
+                          <form action="{{ route('backoffice.order.done', $table['id']) }}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <button class="btn btn-primary w-100 align-bottom">Selesaikan Pesanan!</button>
+                        </form>
                     </div>
                 </div>
             </div>

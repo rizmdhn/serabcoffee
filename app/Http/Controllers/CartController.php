@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DbCart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CartController extends Controller
 {
@@ -77,6 +78,14 @@ class CartController extends Controller
         ]);
         \Cart::session($request->table_number)->clear();
         return redirect()->route('home.products');
+    }
+
+    public function doneorder($id){
+        $cart =  DbCart::findOrFail($id);
+        Log::info($cart);
+        $cart->isfinished = true;
+        $cart->save();
+        return redirect()->route('backoffice.index');
     }
 
 }

@@ -67,6 +67,7 @@ Route::post('clear', 'App\Http\Controllers\CartController@clearAllCart')->name('
 Route::post('checkout', 'App\Http\Controllers\CartController@checkout')->name('cart.checkout');
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/backoffice', 'App\Http\Controllers\Backoffice@index')->name('backoffice.index');
+    Route::post('/order/done/{id}', 'App\Http\Controllers\CartController@doneorder')->name('backoffice.order.done');
     Route::get('/backoffice/products', 'App\Http\Controllers\ProductController@index')->name('backofficeproducts.index');
     Route::get('/backoffice/products/create', 'App\Http\Controllers\ProductController@create')->name('backofficeproducts.create');
     Route::post('/backoffice/products/create', 'App\Http\Controllers\ProductController@store')->name('backofficeproducts.store');
